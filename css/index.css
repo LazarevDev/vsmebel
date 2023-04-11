@@ -1,0 +1,10 @@
+.slider{
+    display: flex;
+    justify-content: center;
+    padding: 180px 0 0 0;
+}
+
+.sliderItem img{
+    width: 100%;
+    border-radius: 20px;
+}
