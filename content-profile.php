@@ -30,7 +30,12 @@ $result = mysqli_fetch_array($query);
     <section class="profile">
         <div class="container">
             <?php 
-            echo $result['name']." - ".$result['lastname']; 
+            echo $result['name']." - ".$result['lastname']."<br>"; 
+
+            if($result['role'] == 1){
+                
+                echo "<a href='admin-panel/admin.php'>Панель администратора</a>";
+            }
             ?><br>
         <a href="logout.php">Выход</a>
     </div>
