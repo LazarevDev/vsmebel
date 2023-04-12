@@ -1,3 +1,10 @@
+<?php 
+require_once('require/db.php');
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -27,16 +34,16 @@
 
             <div class="newProductsContainer">
                 <?php 
-                
-                for ($i=0; $i < 10; $i++) { ?>
+                $queryProducts = mysqli_query($db, "SELECT * FROM `products` ORDER BY `id` DESC");
+                while ($rowProducts = mysqli_fetch_array($queryProducts)) { ?>
                     <div class="newProductBlock">
                         <div class="newProductCover">
-                            <img src="img/cover-product.png" alt="">
+                            <img src="img/cover/<?php echo $rowProducts['cover']; ?>" alt="">
                         </div>
 
                         <div class="newProductInformation">
-                            <h3>8 999 ₽</h3>
-                            <h2>Кресло Людвиг</h2>
+                            <h3><?php echo $rowProducts['price']; ?> ₽</h3>
+                            <h2><?php echo $rowProducts['name']; ?></h2>
 
                             <div class="newRating">
                                 <img src="img/star.png" alt="">
@@ -45,14 +52,12 @@
                             </div>
 
                             <div class="newProductBtn">
-                                <a href="product.php" class="newMore">Подробнее</a>
-                                <a href="" class="newBasket"><img src="img/product-basket.png" alt=""></a>
+                                <a href="product.php?id=<?php echo $rowProducts['id']; ?>" class="newMore">Подробнее</a>
+                                <a href="basket.php?id=<?php echo $rowProducts['id']; ?>" class="newBasket"><img src="img/product-basket.png" alt=""></a>
                             </div>
                         </div>
                     </div>
-                <?php }
-                
-                ?>
+                <?php } ?>
             </div>
         </div>
     </section>
